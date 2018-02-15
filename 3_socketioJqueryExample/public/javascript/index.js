@@ -1,7 +1,8 @@
-var socket = io.connect('ws://localhost:3003');
+var socket = io.connect('ws://localhost:3003'); //create a web socket connection with our server
 
+//add a handler for the "counterChange" subject
 socket.on("counterChange", function(counter){
-	updateCounter(counter);
+	updateCounter(counter); //Whenever we receive data on the "counterChange" subject, pass it to updateCounter
 });
 
 function updateCounter(counter){

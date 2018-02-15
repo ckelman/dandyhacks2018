@@ -22,10 +22,12 @@ server.listen(PORT, function(){
 	console.log('Example app listening on port ' + PORT);
 });
 
+//whenever sokcet.io establishes a new connection to a socket (client)
 io.on('connection', function(socket){
 
+	//listen for messages on the "submit-message" subject from that socket (will be all sockets)
 	socket.on("submit-message", function(message){
-		io.emit("new-message", message);
+		io.emit("new-message", message); //when we receive a message, broadcast it out to all sockets
 	});
 
 });
