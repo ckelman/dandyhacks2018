@@ -1,0 +1,56 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link href="css/vue2-animate.min.css" rel="stylesheet" type="text/css"> <!-- https://github.com/asika32764/vue2-animate -->
+</head>
+
+<body>
+  <div id="app" class="container">
+
+    <transition name="fade" mode="out-in">
+
+      <div v-if="enteringName" id="username-input-div" key="name">
+        <h1> Tell us who will be chatting today</h1>
+
+        <form class="form-inline" onsubmit="return submitUsername()">
+            <input type="text" class="form-control mb-2 mr-sm2 mb-sm-0" id="userNameInput" placeholder="Username" style="width:300px">
+            <button type="submit" class="btn btn-primary">Join Chat</button>
+        </form>
+      </div>
+  	
+      <div v-if="!enteringName" id="messaging-mode" key="chat">
+
+        <div v-show="messages.length > 0" id="messages" class="panel panel-default container">
+
+          <transition-group name="fade">
+            <div v-for="message in messages" v-bind:key="message" class="row">
+              <strong>{{ message.user }}: </strong>{{ message.messagebody }}
+            </div>
+          </transition-group>
+
+        </div>
+
+      	<form class="form-inline" onsubmit="return submitMessage()">
+            <span><strong>Chatting as {{ displayName }}</strong></span></br>
+            <input type="text" class="form-control mb-2 mr-sm2 mb-sm-0" id="messageInput" placeholder="message" style="width:300px">
+            <button type="submit" class="btn btn-primary">Message</button>
+        </form>
+      </div>
+
+  </transition>
+
+  </div>
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="javascript/index.js"></script>
+
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "socketiovueexample",
+  "version": "1.0.0",
+  "description": "Example of traditional structure where client requests data from the server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Charlie Kelman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
